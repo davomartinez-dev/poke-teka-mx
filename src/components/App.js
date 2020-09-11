@@ -4,6 +4,7 @@ import HomePage from './home/HomePage';
 import AboutPage from './about/AboutPage';
 import Header from './common/Header';
 import PageNotFound from './PageNotFound';
+import PokemonsPage from './pokemons/PokemonsPage';
 
 const App = () => (
   <div className="container-fluid">
@@ -11,6 +12,7 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={HomePage} />
       <Route path="/about" component={AboutPage} />
+      <Route path="/pokemons" component={PokemonsPage} />
       <Route component={PageNotFound} />
     </Switch>
   </div>
