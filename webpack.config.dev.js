@@ -41,7 +41,9 @@ module.exports = {
           {
             loader: 'eslint-loader',
             options: {
+              /* eslint-disable */
               formatter: require('eslint/lib/cli-engine/formatters/stylish'),
+              /* eslint-enable */
             },
           },
         ],
