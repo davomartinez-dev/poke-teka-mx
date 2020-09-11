@@ -8,6 +8,7 @@ export const handleResponse = async response => {
 };
 
 export const handleError = error => {
-  console.log('API call failed.' + error);
+  // eslint-disable-next-line no-console
+  console.log(`API call failed.${error}`);
   throw error;
 };
