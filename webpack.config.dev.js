@@ -32,7 +32,19 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader'],
+        use: ['babel-loader'],
+      },
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'eslint-loader',
+            options: {
+              formatter: require('eslint/lib/cli-engine/formatters/stylish'),
+            },
+          },
+        ],
       },
       {
         test: /(\.css)$/,
