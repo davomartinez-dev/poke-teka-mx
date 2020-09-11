@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const PokemonsPage = ({ pokemons }) => (
   <>
     {pokemons.map(pokemon => (
-      <span>{pokemon}</span>
+      <span>{pokemon.name}</span>
     ))}
   </>
 );
