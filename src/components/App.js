@@ -8,8 +8,6 @@ const App = () => {
     <div className="container-fluid">
       <Route exact path="/" component={HomePage} />
       <Route path="/about" component={AboutPage} />
-      <Route path="/courses" component={CoursesPage} />
-      <Route component={PageNotFound} />
     </div>
   );
 };
