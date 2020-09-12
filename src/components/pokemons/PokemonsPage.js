@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { toast } from 'react-toastify';
 import Spinner from '../common/Spinner';
 import * as pokemonActions from '../../redux/actions/pokemonActions';
 import PokemonList from './PokemonsList';
@@ -11,8 +12,7 @@ const PokemonsPage = ({ pokemons, loadPokemons, loading }) => {
   useEffect(() => {
     if (pokemons.length === 0) {
       loadPokemons().catch(error => {
-        // eslint-disable-next-line no-alert
-        alert(`Loading pokemons failed ${error}`);
+        toast.error(`Loading pokemons fail: ${error.message}`, { autoClose: false });
       });
     }
   }, [pokemons]);
