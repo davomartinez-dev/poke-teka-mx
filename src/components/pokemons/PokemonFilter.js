@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const PokemonFilter = ({ filter, changeFilter, pokeTypes }) => (
   <div id="category-filter">
     <label htmlFor="category">
-      Filter
+      Type
       <select
         defaultValue={filter}
         onChange={e => changeFilter(e.target.value)}
