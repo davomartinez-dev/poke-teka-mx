@@ -1,11 +1,10 @@
-/* eslint-disable no-debugger */
-/* eslint-disable react/jsx-key */
 /* eslint-disable react/forbid-prop-types */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as pokemonActions from '../../redux/actions/pokemonActions';
+import PokemonList from './PokemonsList';
 
 const PokemonsPage = ({ pokemons, loadPokemons }) => {
   useEffect(() => {
@@ -19,12 +18,7 @@ const PokemonsPage = ({ pokemons, loadPokemons }) => {
 
   return (
     <>
-      {pokemons.map(pokemon => (
-        <li key={pokemon.name}>
-          <span>{`|${pokemon.name}|`}</span>
-          <br />
-        </li>
-      ))}
+      <PokemonList pokemons={pokemons} />
     </>
   );
 };
