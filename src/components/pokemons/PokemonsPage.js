@@ -7,7 +7,7 @@ import Spinner from '../common/Spinner';
 import * as pokemonActions from '../../redux/actions/pokemonActions';
 import PokemonList from './PokemonsList';
 
-const PokemonsPage = ({ pokemons, loadPokemons }) => {
+const PokemonsPage = ({ pokemons, loadPokemons, loading }) => {
   useEffect(() => {
     if (pokemons.length === 0) {
       loadPokemons().catch(error => {
@@ -20,8 +20,12 @@ const PokemonsPage = ({ pokemons, loadPokemons }) => {
   return (
     <>
       <h2>Pokemons</h2>
-      <Spinner />
-      <PokemonList pokemons={pokemons} />
+      {loading
+        ? <Spinner /> : (
+          <>
+            <PokemonList pokemons={pokemons} />
+          </>
+        )}
     </>
   );
 };
@@ -29,10 +33,12 @@ const PokemonsPage = ({ pokemons, loadPokemons }) => {
 PokemonsPage.propTypes = {
   pokemons: PropTypes.array.isRequired,
   loadPokemons: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
   pokemons: state.pokemons,
+  loading: state.apiCallsInProgress > 0,
 });
 
 const mapDispatchToProps = dispatch => ({
