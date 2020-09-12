@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-catch */
 import * as types from './actionTypes';
-import getPokemons from '../../api/pokeApi';
+import { getPokemons } from '../../api/pokeApi';
 import { beginApiCall, apiCallError } from './apiStatusActions';
 
 // Action Creators.

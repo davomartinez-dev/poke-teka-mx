@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import { handleResponse, handleError } from './apiUtils';
 
 const baseUrl = 'https://pokeapi.co/api/v2/';
@@ -13,7 +14,7 @@ const getPokemonsArray = () => {
   return pokeIdArray.filter((a, b) => pokeIdArray.indexOf(a) === b);
 };
 
-export const getPokemon = async pokemon => {
+const getPokemon = async pokemon => {
   try {
     const response = await fetch(`${baseUrl}pokemon/${pokemon}`);
     return handleResponse(response);
@@ -22,6 +23,5 @@ export const getPokemon = async pokemon => {
   }
 };
 
-const getPokemons = async () => Promise.all(getPokemonsArray().map(pokeId => getPokemon(pokeId)));
-
-export default getPokemons;
+// eslint-disable-next-line max-len
+export const getPokemons = async () => Promise.all(getPokemonsArray().map(pokeId => getPokemon(pokeId)));
