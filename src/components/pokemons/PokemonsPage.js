@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import Spinner from '../common/Spinner';
 import * as pokemonActions from '../../redux/actions/pokemonActions';
 import PokemonList from './PokemonsList';
 
@@ -18,6 +19,8 @@ const PokemonsPage = ({ pokemons, loadPokemons }) => {
 
   return (
     <>
+      <h2>Pokemons</h2>
+      <Spinner />
       <PokemonList pokemons={pokemons} />
     </>
   );
