@@ -5,6 +5,7 @@ import { beginApiCall, apiCallError } from './apiStatusActions';
 
 // Action Creators.
 export const loadPokemonsSuccess = pokemons => ({ type: types.LOAD_POKEMONS_SUCCESS, pokemons });
+export const changeFilter = filter => ({ type: types.CHANGE_FILTER, filter });
 
 // Thunks.
 export const loadPokemons = () => async dispatch => {
