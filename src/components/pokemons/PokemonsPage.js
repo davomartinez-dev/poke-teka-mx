@@ -10,7 +10,10 @@ import * as pokemonActions from '../../redux/actions/pokemonActions';
 const PokemonsPage = ({ pokemons, loadPokemons }) => {
   useEffect(() => {
     if (pokemons.length === 0) {
-      loadPokemons();
+      loadPokemons().catch(error => {
+        // eslint-disable-next-line no-alert
+        alert(`Loading pokemons failed ${error}`);
+      });
     }
   }, [pokemons]);
 
