@@ -22,7 +22,7 @@ const PokemonList = ({ pokemons }) => (
             <img src={pokemon.sprites.front_default} height="100px" width="100px" />
           </td>
           <td>
-            <Link to={`/pokemon/${pokemon.slug}`}>{pokemon.name}</Link>
+            <Link to={`/pokemon/${pokemon.name}`}>{pokemon.name}</Link>
           </td>
           <td>{pokemon.height}</td>
           <td>{pokemon.weight}</td>
