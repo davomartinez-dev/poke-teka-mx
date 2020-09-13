@@ -30,7 +30,6 @@ const PokemonsPage = ({
 
   return (
     <>
-      <h2>Pokemons</h2>
       {loading
         ? <Spinner /> : (
           <>

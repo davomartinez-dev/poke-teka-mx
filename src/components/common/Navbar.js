@@ -1,52 +1,50 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import Button from '@material-ui/core/Button';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import { navbarTab } from '../themes';
 
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
   },
+  toolbar: {
+    justifyContent: 'space-around',
+  },
+  button: {
+    padding: 0,
+  },
 });
 
 export default function Navbar() {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
   return (
-    <Paper className={classes.root}>
-      <Tabs
-        value={value}
-        onChange={handleChange}
-        indicatorColor="primary"
-        textColor="primary"
-        centered
-      >
-        <Tab label={(
-          <NavLink to="/" exact>
-            Home
-          </NavLink>
-        )}
-        />
-        <Tab label={(
-          <NavLink to="/pokemons">
-            Pokemons
-          </NavLink>
-        )}
-        />
-        <Tab label={(
-          <NavLink to="/about">
-            About
-          </NavLink>
-        )}
-        />
-      </Tabs>
-    </Paper>
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar className={classes.toolbar}>
+          <Button className={classes.button}>
+            <NavLink to="/" style={navbarTab} exact>
+              Home
+            </NavLink>
+          </Button>
+
+          <Button className={classes.button}>
+            <NavLink to="/pokemons" style={navbarTab}>
+              Pokemons
+            </NavLink>
+          </Button>
+
+          <Button className={classes.button}>
+            <NavLink to="/about" style={navbarTab}>
+              About
+            </NavLink>
+          </Button>
+        </Toolbar>
+      </AppBar>
+    </div>
+
   );
 }
