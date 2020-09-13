@@ -10,9 +10,9 @@ import capitalizeWord from '../../tools/capitalizeWord';
 const PokemonDetail = ({ pokemon }) => (
   <div className="jumbotron">
     <h1>Pokemon Details</h1>
-    <p>React, Redux and React Router for ultra-responsive web apps.</p>
     <li>{capitalizeWord(pokemon.name)}</li>
     <li><img src={pokemon.sprites.front_default} height="100px" width="100px" /></li>
+    <li><img src={pokemon.sprites.back_default} height="100px" width="100px" /></li>
     <li><Link to="/pokemons/">Back</Link></li>
   </div>
 );

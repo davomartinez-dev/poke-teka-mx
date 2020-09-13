@@ -20,7 +20,7 @@ const PokemonList = ({ pokemons }) => (
       {pokemons.map(pokemon => (
         <tr key={pokemon.id}>
           <td>
-            <img src={pokemon.sprites.front_default} height="100px" width="100px" />
+            <img src={pokemon.sprites.other['official-artwork'].front_default} height="100px" width="100px" />
           </td>
           <td>
             <Link to={`/pokemons/${pokemon.name}`}>{capitalizeWord(pokemon.name)}</Link>
