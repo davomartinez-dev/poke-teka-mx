@@ -5,12 +5,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { newPokemon } from '../../tools/mockData';
+import capitalizeWord from '../../tools/capitalizeWord';
 
 const PokemonDetail = ({ pokemon }) => (
   <div className="jumbotron">
     <h1>Pokemon Details</h1>
     <p>React, Redux and React Router for ultra-responsive web apps.</p>
-    <li>{pokemon.name}</li>
+    <li>{capitalizeWord(pokemon.name)}</li>
     <li><img src={pokemon.sprites.front_default} height="100px" width="100px" /></li>
     <li><Link to="/pokemons/">Back</Link></li>
   </div>
