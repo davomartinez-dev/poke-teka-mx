@@ -15,8 +15,8 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={HomePage} />
       <Route path="/about" component={AboutPage} />
+      <Route path="/pokemons/:name" component={PokemonDetail} />
       <Route path="/pokemons" component={PokemonsPage} />
-      <Route path="/pokemon/:name" component={PokemonDetail} />
       <Route component={PageNotFound} />
     </Switch>
     <ToastContainer autoClose={3000} hideProgressBar />

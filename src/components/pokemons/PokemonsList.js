@@ -23,7 +23,7 @@ const PokemonList = ({ pokemons }) => (
             <img src={pokemon.sprites.front_default} height="100px" width="100px" />
           </td>
           <td>
-            <Link to={`/pokemon/${pokemon.name}`}>{capitalizeWord(pokemon.name)}</Link>
+            <Link to={`/pokemons/${pokemon.name}`}>{capitalizeWord(pokemon.name)}</Link>
           </td>
           <td>{pokemon.height}</td>
           <td>{pokemon.weight}</td>
