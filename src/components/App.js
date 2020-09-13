@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { NavbarTheme } from './themes';
 
 const App = () => (
-  <div className="container-fluid">
+  <div className="container-fluid jumbotron">
     <ThemeProvider theme={NavbarTheme}>
       <Navbar />
     </ThemeProvider>
