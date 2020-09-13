@@ -4,6 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import capitalizeWord from '../../tools/capitalizeWord';
 
 const PokemonList = ({ pokemons }) => (
   <table className="table">
@@ -22,7 +23,7 @@ const PokemonList = ({ pokemons }) => (
             <img src={pokemon.sprites.front_default} height="100px" width="100px" />
           </td>
           <td>
-            <Link to={`/pokemon/${pokemon.name}`}>{pokemon.name}</Link>
+            <Link to={`/pokemon/${pokemon.name}`}>{capitalizeWord(pokemon.name)}</Link>
           </td>
           <td>{pokemon.height}</td>
           <td>{pokemon.weight}</td>

@@ -1,6 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
+import capitalizeWord from '../../tools/capitalizeWord';
 
 const PokemonFilter = ({ filter, changeFilter, pokeTypes }) => (
   <div id="category-filter">
@@ -15,7 +16,7 @@ const PokemonFilter = ({ filter, changeFilter, pokeTypes }) => (
         </option>
         {pokeTypes.map(cat => (
           <option key={cat} value={cat}>
-            {cat}
+            {capitalizeWord(cat)}
           </option>
         ))}
       </select>
