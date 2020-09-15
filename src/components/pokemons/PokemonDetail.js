@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
@@ -86,6 +86,11 @@ const setChartHeiWei = (height, weight) => ({
 
 const PokemonDetail = ({ pokemon }) => {
   const classes = useStyles();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
