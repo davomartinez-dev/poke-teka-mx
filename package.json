@@ -1,8 +1,11 @@
 {
   "name": "ps-redux",
-  "description": "React and Redux Pluralsight course by Cory House",
+  "description": "Poke Teka",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.dev.js --port 3000"
+    "start": "webpack-dev-server --config webpack.config.dev.js --port 3000",
+    "prebuild": "rimraf ./build && mkdir build",
+    "build": "webpack --config webpack.config.prod.js",
+    "postbuild": "http-server ./build"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
