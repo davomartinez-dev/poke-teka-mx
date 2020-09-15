@@ -62,16 +62,24 @@ const setChartAttDefHpSp = (att, def, hp, speed) => ({
 });
 
 const setChartHeiWei = (height, weight) => ({
-  labels: ['Height', 'Weight'],
   datasets: [
     {
-      label: 'My First dataset',
+      label: 'Height',
       backgroundColor: 'rgba(48,63,159,0.2)',
       borderColor: 'rgba(48,63,159,1)',
       borderWidth: 1,
       hoverBackgroundColor: 'rgba(48,63,159,0.4)',
       hoverBorderColor: 'rgba(48,63,159,1)',
-      data: [height, weight],
+      data: [height],
+    },
+    {
+      label: 'Weight',
+      backgroundColor: 'rgba(51,133,40,0.2)',
+      borderColor: 'rgba(51,133,40,1)',
+      borderWidth: 1,
+      hoverBackgroundColor: 'rgba(51,133,40,0.4)',
+      hoverBorderColor: 'rgba(51,133,40,1)',
+      data: [weight],
     },
   ],
 });
