@@ -16,7 +16,7 @@
 
 ## Live Demo
 
-- [Heroku :rocket:](https://poke-teka-mx.netlify.app/)
+- [Live :rocket:](https://poke-teka-mx.netlify.app/)
 
 ## Usage
 
