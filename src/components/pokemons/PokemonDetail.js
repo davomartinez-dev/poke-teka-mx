@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import { Doughnut } from 'react-chartjs-2';
+import { Doughnut, Bar } from 'react-chartjs-2';
 import { newPokemon } from '../../tools/mockData';
 import capitalizeWord from '../../tools/capitalizeWord';
 import navbarTab from '../themes';
@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const setDonutData = (att, def, hp, speed) => ({
+const setChartAttDefHpSp = (att, def, hp, speed) => ({
   labels: [
     'Attack',
     'Defense',
@@ -59,6 +59,21 @@ const setDonutData = (att, def, hp, speed) => ({
       '#36A2EB',
     ],
   }],
+});
+
+const setChartHeiWei = (height, weight) => ({
+  labels: ['Height', 'Weight'],
+  datasets: [
+    {
+      label: 'My First dataset',
+      backgroundColor: 'rgba(48,63,159,0.2)',
+      borderColor: 'rgba(48,63,159,1)',
+      borderWidth: 1,
+      hoverBackgroundColor: 'rgba(48,63,159,0.4)',
+      hoverBorderColor: 'rgba(48,63,159,1)',
+      data: [height, weight],
+    },
+  ],
 });
 
 const PokemonDetail = ({ pokemon }) => {
@@ -91,10 +106,6 @@ const PokemonDetail = ({ pokemon }) => {
               ))}
             </ul>
           </Paper>
-          <Paper className={classes.paper}>
-            <h2>Height</h2>
-            {pokemon.height}
-          </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
@@ -105,15 +116,21 @@ const PokemonDetail = ({ pokemon }) => {
               ))}
             </ul>
           </Paper>
-          <Paper className={classes.paper}>
-            <h2>Weight</h2>
-            {pokemon.weight}
-          </Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <h2>Stats</h2>
-            <Doughnut data={setDonutData(pokemon.stats[0].base_stat, pokemon.stats[2].base_stat, pokemon.stats[1].base_stat, pokemon.stats[5].base_stat)} />
+            <Doughnut data={setChartAttDefHpSp(pokemon.stats[0].base_stat, pokemon.stats[2].base_stat, pokemon.stats[1].base_stat, pokemon.stats[5].base_stat)} />
+          </Paper>
+          <Paper className={classes.paper}>
+            <Bar
+              data={setChartHeiWei(pokemon.height, pokemon.weight)}
+              width={100}
+              height={300}
+              options={{
+                maintainAspectRatio: false,
+              }}
+            />
           </Paper>
         </Grid>
       </Grid>
