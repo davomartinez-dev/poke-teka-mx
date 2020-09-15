@@ -81,6 +81,7 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
+              // eslint-disable-next-line global-require
               plugins: () => [require('cssnano')],
               sourceMap: true,
             },
