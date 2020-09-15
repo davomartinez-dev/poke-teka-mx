@@ -7,11 +7,9 @@ import { toast } from 'react-toastify';
 import Spinner from '../common/Spinner';
 import * as pokemonActions from '../../redux/actions/pokemonActions';
 import PokemonList from './PokemonsList';
-// eslint-disable-next-line no-unused-vars
 import PokemonFilter from './PokemonFilter';
 
 const PokemonsPage = ({
-  // eslint-disable-next-line no-unused-vars
   pokemons, loadPokemons, loading, changeFilter, filter, pokeTypes,
 }) => {
   useEffect(() => {
@@ -32,7 +30,6 @@ const PokemonsPage = ({
 
   return (
     <>
-      <h2>Pokemons</h2>
       {loading
         ? <Spinner /> : (
           <>
