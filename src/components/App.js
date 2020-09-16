@@ -15,7 +15,7 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={HomePage} />
       <Route path="/about" component={AboutPage} />
-      <Route path="/pokemons/:name" component={PokemonDetail} />
+      <Route exact path="/pokemons/:name" component={PokemonDetail} />
       <Route path="/pokemons" component={PokemonsPage} />
       <Route component={PageNotFound} />
     </Switch>
