@@ -5,7 +5,8 @@
     "start": "webpack-dev-server --config webpack.config.dev.js --port 3000",
     "prebuild": "rimraf ./build && mkdir build",
     "build": "webpack --config webpack.config.prod.js",
-    "postbuild": "http-server ./build"
+    "postbuild": "http-server ./build",
+    "test": "jest --watch"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",

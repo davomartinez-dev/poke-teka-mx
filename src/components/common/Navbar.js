@@ -22,7 +22,7 @@ export default function Navbar() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <nav className={classes.root}>
       <AppBar position="static" color="primary">
         <Toolbar className={classes.toolbar}>
           <Button className={classes.button}>
@@ -44,7 +44,7 @@ export default function Navbar() {
           </Button>
         </Toolbar>
       </AppBar>
-    </div>
+    </nav>
 
   );
 }
