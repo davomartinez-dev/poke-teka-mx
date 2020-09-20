@@ -33,7 +33,7 @@ const useStyles = makeStyles({
   },
 });
 
-const PokemonDetailTable = ({ pokemon }) => {
+const PokemonStats2 = ({ pokemon }) => {
   const classes = useStyles();
 
   return (
@@ -41,18 +41,14 @@ const PokemonDetailTable = ({ pokemon }) => {
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell align="center">Attack</StyledTableCell>
-            <StyledTableCell align="center">Defense</StyledTableCell>
-            <StyledTableCell align="center">HP</StyledTableCell>
-            <StyledTableCell align="center">Speed</StyledTableCell>
+            <StyledTableCell align="center">Height</StyledTableCell>
+            <StyledTableCell align="center">Weight</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           <StyledTableRow key={pokemon.name}>
-            <StyledTableCell align="center">{pokemon.stats[0].base_stat}</StyledTableCell>
-            <StyledTableCell align="center">{pokemon.stats[2].base_stat}</StyledTableCell>
-            <StyledTableCell align="center">{pokemon.stats[1].base_stat}</StyledTableCell>
-            <StyledTableCell align="center">{pokemon.stats[5].base_stat}</StyledTableCell>
+            <StyledTableCell align="center">{pokemon.height}</StyledTableCell>
+            <StyledTableCell align="center">{pokemon.weight}</StyledTableCell>
           </StyledTableRow>
         </TableBody>
       </Table>
@@ -60,8 +56,8 @@ const PokemonDetailTable = ({ pokemon }) => {
   );
 };
 
-PokemonDetailTable.propTypes = {
+PokemonStats2.propTypes = {
   pokemon: PropTypes.object.isRequired,
 };
 
-export default PokemonDetailTable;
+export default PokemonStats2;

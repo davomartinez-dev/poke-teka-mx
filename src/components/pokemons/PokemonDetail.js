@@ -14,14 +14,15 @@ import { Doughnut, Bar } from 'react-chartjs-2';
 import { newPokemon } from '../../tools/mockData';
 import capitalizeWord from '../../tools/capitalizeWord';
 import navbarTab from '../themes';
-import PokemonDetailTable from './PokemonDetailTable';
+import PokemonStats1 from './PokemonStats1';
+import PokemonStats2 from './PokemonStats2';
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
   paper: {
-    padding: theme.spacing(3),
+    padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
@@ -136,10 +137,13 @@ const PokemonDetail = ({ pokemon }) => {
             <h2>Stats</h2>
           </Paper>
           <Paper className={classes.paper}>
-            <PokemonDetailTable pokemon={pokemon} />
+            <PokemonStats1 pokemon={pokemon} />
           </Paper>
           <Paper className={classes.paper}>
             <Doughnut data={setChartAttDefHpSp(pokemon.stats[0].base_stat, pokemon.stats[2].base_stat, pokemon.stats[1].base_stat, pokemon.stats[5].base_stat)} />
+          </Paper>
+          <Paper className={classes.paper}>
+            <PokemonStats2 pokemon={pokemon} />
           </Paper>
           <Paper className={classes.paper}>
             <Bar
