@@ -4,7 +4,7 @@ import { handleResponse, handleError } from './apiUtils';
 const baseUrl = 'https://pokeapi.co/api/v2/';
 
 const getPokemonsArray = () => {
-  const max = 600; const min = 1;
+  const max = 1; const min = 1;
   const pokeIdArray = [];
   let randId;
   for (let i = 0; i < 1; i += 1) {

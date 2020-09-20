@@ -16,6 +16,8 @@ import capitalizeWord from '../../tools/capitalizeWord';
 import navbarTab from '../themes';
 import PokemonStats1 from './PokemonStats1';
 import PokemonStats2 from './PokemonStats2';
+import PokemonAbilities from './PokemonAbilities';
+import PokemonTypes from './PokemonTypes';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -99,6 +101,10 @@ const PokemonDetail = ({ pokemon }) => {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <h1>{capitalizeWord(pokemon.name)}</h1>
+          </Paper>
+        </Grid>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>
             <img src={pokemon.sprites.other['official-artwork'].front_default} height="400px" width="340px" />
           </Paper>
         </Grid>
@@ -112,30 +118,27 @@ const PokemonDetail = ({ pokemon }) => {
             <img src={pokemon.sprites.front_default} height="200px" width="200px" />
           </Paper>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <h2>Abilities</h2>
-            <ul className={classes.ulStyle}>
-              {pokemon.abilities.map(ability => (
-                <li key={ability.ability.url}>{capitalizeWord(ability.ability.name)}</li>
-              ))}
-            </ul>
+            <h2>Abilities & Types</h2>
           </Paper>
         </Grid>
         <Grid item xs={12} md={6}>
           <Paper className={classes.paper}>
-            <h2>Types</h2>
-            <ul className={classes.ulStyle}>
-              {pokemon.types.map(type => (
-                <li key={type.type.url}>{capitalizeWord(type.type.name)}</li>
-              ))}
-            </ul>
+            <PokemonAbilities pokemon={pokemon} />
+          </Paper>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Paper className={classes.paper}>
+            <PokemonTypes pokemon={pokemon} />
           </Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <h2>Stats</h2>
           </Paper>
+        </Grid>
+        <Grid item xs={12}>
           <Paper className={classes.paper}>
             <PokemonStats1 pokemon={pokemon} />
           </Paper>
