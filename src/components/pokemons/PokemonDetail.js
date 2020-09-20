@@ -5,7 +5,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -13,7 +12,6 @@ import Grid from '@material-ui/core/Grid';
 import { Doughnut, Bar, defaults } from 'react-chartjs-2';
 import { newPokemon } from '../../tools/mockData';
 import capitalizeWord from '../../tools/capitalizeWord';
-import navbarTab from '../themes';
 import PokemonStats1 from './PokemonStats1';
 import PokemonStats2 from './PokemonStats2';
 import PokemonAbilities from './PokemonAbilities';
@@ -103,12 +101,17 @@ const setChartHeight = height => ({
   ],
 });
 
-const PokemonDetail = ({ pokemon }) => {
+// eslint-disable-next-line no-unused-vars
+const PokemonDetail = ({ pokemon, history }) => {
   const classes = useStyles();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleClick = () => {
+    history.goBack();
+  };
 
   return (
     <div className={classes.root}>
@@ -125,12 +128,12 @@ const PokemonDetail = ({ pokemon }) => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
-            <img className={classes.image} src={pokemon.sprites.back_default} height="250px" width="250px" />
+            <img className={classes.image} src={pokemon.sprites.front_default} height="250px" width="250px" />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
-            <img className={classes.image} src={pokemon.sprites.front_default} height="250px" width="250px" />
+            <img className={classes.image} src={pokemon.sprites.back_default} height="250px" width="250px" />
           </Paper>
         </Grid>
         <Grid item xs={12}>
@@ -187,8 +190,8 @@ const PokemonDetail = ({ pokemon }) => {
           </Paper>
         </Grid>
       </Grid>
-      <Button variant="contained" color="primary" className={classes.backButton}>
-        <Link to="/pokemons/" style={navbarTab}>Back</Link>
+      <Button variant="contained" color="primary" className={classes.backButton} onClick={handleClick}>
+        Back
       </Button>
     </div>
   );
@@ -196,6 +199,7 @@ const PokemonDetail = ({ pokemon }) => {
 
 PokemonDetail.propTypes = {
   pokemon: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export function getPokemonByName(pokemons, name) {
