@@ -14,13 +14,14 @@ import { Doughnut, Bar } from 'react-chartjs-2';
 import { newPokemon } from '../../tools/mockData';
 import capitalizeWord from '../../tools/capitalizeWord';
 import navbarTab from '../themes';
+import PokemonDetailTable from './PokemonDetailTable';
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
@@ -97,20 +98,20 @@ const PokemonDetail = ({ pokemon }) => {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <h1>{capitalizeWord(pokemon.name)}</h1>
-            <img src={pokemon.sprites.other['official-artwork'].front_default} height="350px" width="300px" />
+            <img src={pokemon.sprites.other['official-artwork'].front_default} height="400px" width="340px" />
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} md={6}>
           <Paper className={classes.paper}>
-            <img src={pokemon.sprites.back_default} height="150px" width="150px" />
+            <img src={pokemon.sprites.back_default} height="200px" width="200px" />
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} md={6}>
           <Paper className={classes.paper}>
-            <img src={pokemon.sprites.front_default} height="150px" width="150px" />
+            <img src={pokemon.sprites.front_default} height="200px" width="200px" />
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} md={6}>
           <Paper className={classes.paper}>
             <h2>Abilities</h2>
             <ul className={classes.ulStyle}>
@@ -120,7 +121,7 @@ const PokemonDetail = ({ pokemon }) => {
             </ul>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} md={6}>
           <Paper className={classes.paper}>
             <h2>Types</h2>
             <ul className={classes.ulStyle}>
@@ -133,6 +134,11 @@ const PokemonDetail = ({ pokemon }) => {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <h2>Stats</h2>
+          </Paper>
+          <Paper className={classes.paper}>
+            <PokemonDetailTable pokemon={pokemon} />
+          </Paper>
+          <Paper className={classes.paper}>
             <Doughnut data={setChartAttDefHpSp(pokemon.stats[0].base_stat, pokemon.stats[2].base_stat, pokemon.stats[1].base_stat, pokemon.stats[5].base_stat)} />
           </Paper>
           <Paper className={classes.paper}>
