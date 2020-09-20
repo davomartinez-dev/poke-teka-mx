@@ -16,6 +16,9 @@ const useStyles = makeStyles({
   button: {
     padding: 0,
   },
+  navlink: {
+    fontSize: '1.3em',
+  },
 });
 
 export default function Navbar() {
@@ -26,19 +29,19 @@ export default function Navbar() {
       <AppBar position="static" color="primary">
         <Toolbar className={classes.toolbar}>
           <Button className={classes.button}>
-            <NavLink to="/" style={navbarTab} exact>
+            <NavLink className={classes.navlink} to="/" style={navbarTab} exact>
               Home
             </NavLink>
           </Button>
 
           <Button className={classes.button}>
-            <NavLink to="/pokemons" style={navbarTab}>
+            <NavLink className={classes.navlink} to="/pokemons" style={navbarTab}>
               Pokemons
             </NavLink>
           </Button>
 
           <Button className={classes.button}>
-            <NavLink to="/about" style={navbarTab}>
+            <NavLink className={classes.navlink} to="/about" style={navbarTab}>
               About
             </NavLink>
           </Button>

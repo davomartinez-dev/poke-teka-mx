@@ -13,11 +13,12 @@ import capitalizeWord from '../../tools/capitalizeWord';
 
 const StyledTableCell = withStyles(theme => ({
   head: {
+    fontSize: '1.1em',
     backgroundColor: theme.palette.common.white,
     color: theme.palette.text.secondary,
   },
   body: {
-    fontSize: 14,
+    fontSize: '0.9em',
     color: theme.palette.text.secondary,
   },
 }))(TableCell);

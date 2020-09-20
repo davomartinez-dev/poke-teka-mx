@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import { Doughnut, Bar } from 'react-chartjs-2';
+import { Doughnut, Bar, defaults } from 'react-chartjs-2';
 import { newPokemon } from '../../tools/mockData';
 import capitalizeWord from '../../tools/capitalizeWord';
 import navbarTab from '../themes';
@@ -18,6 +18,8 @@ import PokemonStats1 from './PokemonStats1';
 import PokemonStats2 from './PokemonStats2';
 import PokemonAbilities from './PokemonAbilities';
 import PokemonTypes from './PokemonTypes';
+
+defaults.global.defaultFontSize = 18;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -108,14 +110,14 @@ const PokemonDetail = ({ pokemon }) => {
             <img src={pokemon.sprites.other['official-artwork'].front_default} height="400px" width="340px" />
           </Paper>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
-            <img src={pokemon.sprites.back_default} height="200px" width="200px" />
+            <img src={pokemon.sprites.back_default} height="250px" width="250px" />
           </Paper>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
-            <img src={pokemon.sprites.front_default} height="200px" width="200px" />
+            <img src={pokemon.sprites.front_default} height="250px" width="250px" />
           </Paper>
         </Grid>
         <Grid item xs={12}>

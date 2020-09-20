@@ -15,6 +15,7 @@ const useStyles = makeStyles({
     display: 'flex',
     width: '70%',
     justifyContent: 'center',
+    color: '#3F51B5',
   },
   form: {
     width: '80%',

@@ -32,6 +32,8 @@ const styles = {
     borderBottom: '5px solid #3F51B5',
     width: '70%',
     textAlign: 'center',
+    color: '#3F51B5',
+    textDecoration: 'none',
   },
 };
 
