@@ -74,6 +74,7 @@ const setChartAttDefHpSp = (att, def, hp, speed) => ({
 });
 
 const setChartWeight = weight => ({
+  labels: ['Quantity'],
   datasets: [
     {
       label: 'Weight',
@@ -88,6 +89,7 @@ const setChartWeight = weight => ({
 });
 
 const setChartHeight = height => ({
+  labels: ['Quantity'],
   datasets: [
     {
       label: 'Height',
@@ -166,6 +168,7 @@ const PokemonDetail = ({ pokemon }) => {
               <Bar
                 data={setChartHeight(pokemon.height)}
                 width={100}
+                height={300}
                 options={{
                   maintainAspectRatio: false,
                 }}
@@ -174,6 +177,7 @@ const PokemonDetail = ({ pokemon }) => {
             <Grid item xs={6}>
               <Bar
                 data={setChartWeight(pokemon.weight)}
+                width={100}
                 height={300}
                 options={{
                   maintainAspectRatio: false,
