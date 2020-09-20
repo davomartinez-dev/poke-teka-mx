@@ -26,6 +26,15 @@ const styles = {
     borderRight: '5px solid #3F51B5',
     width: '100%',
   },
+  imgBox: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  mainImg: {
+    width: '100%',
+    height: '100%',
+  },
   name: {
     borderLeft: '5px solid #3F51B5',
     borderRight: '5px solid #3F51B5',
@@ -43,7 +52,9 @@ const PokemonList = ({ pokemons }) => (
       // eslint-disable-next-line max-len
       <li key={pokemon.id} style={styles.li}>
         <Link to={`/pokemons/${pokemon.name}`} style={styles.name}><h2>{capitalizeWord(pokemon.name)}</h2></Link>
-        <img src={pokemon.sprites.other['official-artwork'].front_default} height="350px" width="300px" />
+        <div style={styles.imgBox}>
+          <img style={styles.mainImg} src={pokemon.sprites.other['official-artwork'].front_default} />
+        </div>
       </li>
     ))}
   </ul>

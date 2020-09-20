@@ -29,9 +29,8 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-  },
-  backButton: {
-    margin: '20px 0',
+    display: 'flex',
+    justifyContent: 'center',
   },
   ulStyle: {
     padding: 0,
@@ -40,6 +39,10 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  image: {
+    width: '100%',
+    height: '100%',
   },
 }));
 
@@ -107,17 +110,17 @@ const PokemonDetail = ({ pokemon }) => {
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <img src={pokemon.sprites.other['official-artwork'].front_default} height="400px" width="340px" />
+            <img className={classes.image} src={pokemon.sprites.other['official-artwork'].front_default} />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
-            <img src={pokemon.sprites.back_default} height="250px" width="250px" />
+            <img className={classes.image} src={pokemon.sprites.back_default} height="250px" width="250px" />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
-            <img src={pokemon.sprites.front_default} height="250px" width="250px" />
+            <img className={classes.image} src={pokemon.sprites.front_default} height="250px" width="250px" />
           </Paper>
         </Grid>
         <Grid item xs={12}>
@@ -162,7 +165,7 @@ const PokemonDetail = ({ pokemon }) => {
           </Paper>
         </Grid>
       </Grid>
-      <Button variant="contained" color="primary" className={classes.backButton}>
+      <Button variant="contained" color="primary">
         <Link to="/pokemons/" style={navbarTab}>Back</Link>
       </Button>
     </div>
