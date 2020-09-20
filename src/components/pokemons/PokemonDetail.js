@@ -73,25 +73,30 @@ const setChartAttDefHpSp = (att, def, hp, speed) => ({
   }],
 });
 
-const setChartHeiWei = (height, weight) => ({
+const setChartWeight = weight => ({
   datasets: [
     {
-      label: 'Height',
+      label: 'Weight',
       backgroundColor: 'rgba(48,63,159,0.2)',
       borderColor: 'rgba(48,63,159,1)',
       borderWidth: 1,
       hoverBackgroundColor: 'rgba(48,63,159,0.4)',
       hoverBorderColor: 'rgba(48,63,159,1)',
-      data: [height],
+      data: [weight],
     },
+  ],
+});
+
+const setChartHeight = height => ({
+  datasets: [
     {
-      label: 'Weight',
+      label: 'Height',
       backgroundColor: 'rgba(51,133,40,0.2)',
       borderColor: 'rgba(51,133,40,1)',
       borderWidth: 1,
       hoverBackgroundColor: 'rgba(51,133,40,0.4)',
       hoverBorderColor: 'rgba(51,133,40,1)',
-      data: [weight],
+      data: [height],
     },
   ],
 });
@@ -157,14 +162,24 @@ const PokemonDetail = ({ pokemon }) => {
             <PokemonStats2 pokemon={pokemon} />
           </Paper>
           <Paper className={classes.paper}>
-            <Bar
-              data={setChartHeiWei(pokemon.height, pokemon.weight)}
-              width={100}
-              height={300}
-              options={{
-                maintainAspectRatio: false,
-              }}
-            />
+            <Grid item xs={6}>
+              <Bar
+                data={setChartHeight(pokemon.height)}
+                width={100}
+                options={{
+                  maintainAspectRatio: false,
+                }}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <Bar
+                data={setChartWeight(pokemon.weight)}
+                height={300}
+                options={{
+                  maintainAspectRatio: false,
+                }}
+              />
+            </Grid>
           </Paper>
         </Grid>
       </Grid>
