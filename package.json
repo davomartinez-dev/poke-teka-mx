@@ -27,6 +27,7 @@
     "react": "16.8.4",
     "react-chartjs-2": "^2.10.0",
     "react-dom": "16.8.4",
+    "react-icons": "^3.11.0",
     "react-redux": "6.0.1",
     "react-router-dom": "5.0.0",
     "react-toastify": "4.5.2",

@@ -16,6 +16,7 @@ import PokemonStats1 from './PokemonStats1';
 import PokemonStats2 from './PokemonStats2';
 import PokemonAbilities from './PokemonAbilities';
 import PokemonTypes from './PokemonTypes';
+import ScrollArrow from '../common/ScrollArrow';
 
 defaults.global.defaultFontSize = 18;
 
@@ -193,6 +194,7 @@ const PokemonDetail = ({ pokemon, history }) => {
       <Button variant="contained" color="primary" className={classes.backButton} onClick={handleClick}>
         Back
       </Button>
+      <ScrollArrow />
     </div>
   );
 };

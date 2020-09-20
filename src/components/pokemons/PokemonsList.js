@@ -5,6 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import capitalizeWord from '../../tools/capitalizeWord';
+import ScrollArrow from '../common/ScrollArrow';
 
 const styles = {
   ul: {
@@ -47,17 +48,20 @@ const styles = {
 };
 
 const PokemonList = ({ pokemons }) => (
-  <ul style={styles.ul}>
-    {pokemons.map(pokemon => (
-      // eslint-disable-next-line max-len
-      <li key={pokemon.id} style={styles.li}>
-        <Link to={`/pokemons/${pokemon.name}`} style={styles.name}><h2>{capitalizeWord(pokemon.name)}</h2></Link>
-        <div style={styles.imgBox}>
-          <img style={styles.mainImg} src={pokemon.sprites.other['official-artwork'].front_default} />
-        </div>
-      </li>
-    ))}
-  </ul>
+  <>
+    <ul style={styles.ul}>
+      {pokemons.map(pokemon => (
+        // eslint-disable-next-line max-len
+        <li key={pokemon.id} style={styles.li}>
+          <Link to={`/pokemons/${pokemon.name}`} style={styles.name}><h2>{capitalizeWord(pokemon.name)}</h2></Link>
+          <div style={styles.imgBox}>
+            <img style={styles.mainImg} src={pokemon.sprites.other['official-artwork'].front_default} />
+          </div>
+        </li>
+      ))}
+    </ul>
+    <ScrollArrow />
+  </>
 );
 
 PokemonList.propTypes = {
