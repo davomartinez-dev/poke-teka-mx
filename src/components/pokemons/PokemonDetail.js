@@ -32,6 +32,9 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'center',
   },
+  backButton: {
+    marginTop: 20,
+  },
   ulStyle: {
     padding: 0,
     listStyleType: 'none',
@@ -165,7 +168,7 @@ const PokemonDetail = ({ pokemon }) => {
           </Paper>
         </Grid>
       </Grid>
-      <Button variant="contained" color="primary">
+      <Button variant="contained" color="primary" className={classes.backButton}>
         <Link to="/pokemons/" style={navbarTab}>Back</Link>
       </Button>
     </div>
