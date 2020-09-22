@@ -5,15 +5,20 @@
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import { Doughnut, Bar } from 'react-chartjs-2';
+import { Doughnut, Bar, defaults } from 'react-chartjs-2';
 import { newPokemon } from '../../tools/mockData';
 import capitalizeWord from '../../tools/capitalizeWord';
-import navbarTab from '../themes';
+import PokemonStats1 from './PokemonStats1';
+import PokemonStats2 from './PokemonStats2';
+import PokemonAbilities from './PokemonAbilities';
+import PokemonTypes from './PokemonTypes';
+import ScrollArrow from '../common/ScrollArrow';
+
+defaults.global.defaultFontSize = 18;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -23,9 +28,11 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    display: 'flex',
+    justifyContent: 'center',
   },
   backButton: {
-    margin: '20px 0',
+    marginTop: 20,
   },
   ulStyle: {
     padding: 0,
@@ -34,6 +41,10 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  image: {
+    width: '100%',
+    height: '100%',
   },
 }));
 
@@ -61,35 +72,47 @@ const setChartAttDefHpSp = (att, def, hp, speed) => ({
   }],
 });
 
-const setChartHeiWei = (height, weight) => ({
+const setChartWeight = weight => ({
+  labels: ['Quantity'],
   datasets: [
     {
-      label: 'Height',
+      label: 'Weight',
       backgroundColor: 'rgba(48,63,159,0.2)',
       borderColor: 'rgba(48,63,159,1)',
       borderWidth: 1,
       hoverBackgroundColor: 'rgba(48,63,159,0.4)',
       hoverBorderColor: 'rgba(48,63,159,1)',
-      data: [height],
-    },
-    {
-      label: 'Weight',
-      backgroundColor: 'rgba(51,133,40,0.2)',
-      borderColor: 'rgba(51,133,40,1)',
-      borderWidth: 1,
-      hoverBackgroundColor: 'rgba(51,133,40,0.4)',
-      hoverBorderColor: 'rgba(51,133,40,1)',
       data: [weight],
     },
   ],
 });
 
-const PokemonDetail = ({ pokemon }) => {
+const setChartHeight = height => ({
+  labels: ['Quantity'],
+  datasets: [
+    {
+      label: 'Height',
+      backgroundColor: 'rgba(51,133,40,0.2)',
+      borderColor: 'rgba(51,133,40,1)',
+      borderWidth: 1,
+      hoverBackgroundColor: 'rgba(51,133,40,0.4)',
+      hoverBorderColor: 'rgba(51,133,40,1)',
+      data: [height],
+    },
+  ],
+});
+
+// eslint-disable-next-line no-unused-vars
+const PokemonDetail = ({ pokemon, history }) => {
   const classes = useStyles();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleClick = () => {
+    history.goBack();
+  };
 
   return (
     <div className={classes.root}>
@@ -97,65 +120,88 @@ const PokemonDetail = ({ pokemon }) => {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <h1>{capitalizeWord(pokemon.name)}</h1>
-            <img src={pokemon.sprites.other['official-artwork'].front_default} height="350px" width="300px" />
+          </Paper>
+        </Grid>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>
+            <img className={classes.image} src={pokemon.sprites.other['official-artwork'].front_default} />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
-            <img src={pokemon.sprites.back_default} height="150px" width="150px" />
+            <img className={classes.image} src={pokemon.sprites.front_default} height="250px" width="250px" />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
-            <img src={pokemon.sprites.front_default} height="150px" width="150px" />
+            <img className={classes.image} src={pokemon.sprites.back_default} height="250px" width="250px" />
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <h2>Abilities</h2>
-            <ul className={classes.ulStyle}>
-              {pokemon.abilities.map(ability => (
-                <li key={ability.ability.url}>{capitalizeWord(ability.ability.name)}</li>
-              ))}
-            </ul>
+            <h2>Abilities & Types</h2>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} md={6}>
           <Paper className={classes.paper}>
-            <h2>Types</h2>
-            <ul className={classes.ulStyle}>
-              {pokemon.types.map(type => (
-                <li key={type.type.url}>{capitalizeWord(type.type.name)}</li>
-              ))}
-            </ul>
+            <PokemonAbilities pokemon={pokemon} />
+          </Paper>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Paper className={classes.paper}>
+            <PokemonTypes pokemon={pokemon} />
           </Paper>
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <h2>Stats</h2>
+          </Paper>
+        </Grid>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>
+            <PokemonStats1 pokemon={pokemon} />
+          </Paper>
+          <Paper className={classes.paper}>
             <Doughnut data={setChartAttDefHpSp(pokemon.stats[0].base_stat, pokemon.stats[2].base_stat, pokemon.stats[1].base_stat, pokemon.stats[5].base_stat)} />
           </Paper>
           <Paper className={classes.paper}>
-            <Bar
-              data={setChartHeiWei(pokemon.height, pokemon.weight)}
-              width={100}
-              height={300}
-              options={{
-                maintainAspectRatio: false,
-              }}
-            />
+            <PokemonStats2 pokemon={pokemon} />
+          </Paper>
+          <Paper className={classes.paper}>
+            <Grid item xs={6}>
+              <Bar
+                data={setChartHeight(pokemon.height)}
+                width={100}
+                height={300}
+                options={{
+                  maintainAspectRatio: false,
+                }}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <Bar
+                data={setChartWeight(pokemon.weight)}
+                width={100}
+                height={300}
+                options={{
+                  maintainAspectRatio: false,
+                }}
+              />
+            </Grid>
           </Paper>
         </Grid>
       </Grid>
-      <Button variant="contained" color="primary" className={classes.backButton}>
-        <Link to="/pokemons/" style={navbarTab}>Back</Link>
+      <Button variant="contained" color="primary" className={classes.backButton} onClick={handleClick}>
+        Back
       </Button>
+      <ScrollArrow />
     </div>
   );
 };
 
 PokemonDetail.propTypes = {
   pokemon: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export function getPokemonByName(pokemons, name) {
