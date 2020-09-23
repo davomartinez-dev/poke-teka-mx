@@ -34,15 +34,12 @@ const PokemonsPage = ({
     // eslint-disable-next-line max-len
     const results = pokemons.filter(pokemon => pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()));
     setSearchResults(results);
-    // debugger;
   }, [searchTerm]);
 
   useEffect(() => () => {
-    console.log('cleaned up');
   }, []);
 
   const pokeSelected = searchResults.length <= 0 ? pokemons : searchResults;
-  console.log('ok');
   const _pokemons = pokeSelected.reduce((result, e) => {
     if (filter === 'All' || e.types[0].type.name === filter) {
       result.push(e);
