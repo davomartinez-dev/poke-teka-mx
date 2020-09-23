@@ -8,6 +8,7 @@ import PageNotFound from './PageNotFound';
 import PokemonsPage from './pokemons/PokemonsPage';
 import PokemonDetail from './pokemons/PokemonDetail';
 import 'react-toastify/dist/ReactToastify.css';
+import ScrollArrow from './common/ScrollArrow';
 
 const App = () => (
   <div className="container-fluid jumbotron">
@@ -20,6 +21,7 @@ const App = () => (
       <Route component={PageNotFound} />
     </Switch>
     <ToastContainer autoClose={3000} hideProgressBar />
+    <ScrollArrow />
   </div>
 );
 

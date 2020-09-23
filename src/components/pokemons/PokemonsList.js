@@ -5,7 +5,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import capitalizeWord from '../../tools/capitalizeWord';
-import ScrollArrow from '../common/ScrollArrow';
 
 const styles = {
   ul: {
@@ -60,7 +59,6 @@ const PokemonList = ({ pokemons }) => (
         </li>
       ))}
     </ul>
-    <ScrollArrow />
   </>
 );
 
