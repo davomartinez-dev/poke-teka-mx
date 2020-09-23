@@ -8,7 +8,7 @@ const getPokemonsArray = () => {
   const max = 600; const min = 1;
   const pokeIdArray = [];
   let randId;
-  for (let i = 1; i < 701; i += 1) {
+  for (let i = 1; i < 11; i += 1) {
     // randId = Math.floor(Math.random() * (max - 1)) + min;
     pokeIdArray.push(i);
   }
