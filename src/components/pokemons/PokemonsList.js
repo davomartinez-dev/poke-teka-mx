@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react/forbid-prop-types */
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -32,8 +31,8 @@ const styles = {
     alignItems: 'center',
   },
   mainImg: {
-    width: '100%',
-    height: '100%',
+    width: '68%',
+    height: '68%',
   },
   name: {
     borderLeft: '5px solid #3F51B5',
@@ -50,7 +49,6 @@ const PokemonList = ({ pokemons }) => (
   <>
     <ul style={styles.ul}>
       {pokemons.map(pokemon => (
-        // eslint-disable-next-line max-len
         <li key={pokemon.id} style={styles.li}>
           <Link to={`/pokemons/${pokemon.name}`} style={styles.name}><h2>{capitalizeWord(pokemon.name)}</h2></Link>
           <div style={styles.imgBox}>

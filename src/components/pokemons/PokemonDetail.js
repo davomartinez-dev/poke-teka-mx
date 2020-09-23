@@ -41,7 +41,11 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  image: {
+  mainImage: {
+    width: '50%',
+    height: '50%',
+  },
+  secondaryImage: {
     width: '100%',
     height: '100%',
   },
@@ -123,17 +127,17 @@ const PokemonDetail = ({ pokemon, history }) => {
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <img className={classes.image} src={pokemon.sprites.other['official-artwork'].front_default} />
+            <img className={classes.mainImage} src={pokemon.sprites.other['official-artwork'].front_default} />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
-            <img className={classes.image} src={pokemon.sprites.front_default} height="250px" width="250px" />
+            <img className={classes.secondaryImage} src={pokemon.sprites.front_default} height="250px" width="250px" />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
-            <img className={classes.image} src={pokemon.sprites.back_default} height="250px" width="250px" />
+            <img className={classes.secondaryImage} src={pokemon.sprites.back_default} height="250px" width="250px" />
           </Paper>
         </Grid>
         <Grid item xs={12}>

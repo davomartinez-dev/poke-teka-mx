@@ -1,5 +1,6 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable react/forbid-prop-types */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -8,10 +9,18 @@ import Spinner from '../common/Spinner';
 import * as pokemonActions from '../../redux/actions/pokemonActions';
 import PokemonList from './PokemonsList';
 import PokemonFilter from './PokemonFilter';
+import PokemonSearch from './PokemonSearch';
 
 const PokemonsPage = ({
   pokemons, loadPokemons, loading, changeFilter, filter, pokeTypes,
 }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleChange = e => {
+    setSearchTerm(e.target.value);
+  };
+
   useEffect(() => {
     if (pokemons.length === 0) {
       loadPokemons().catch(error => {
@@ -20,8 +29,17 @@ const PokemonsPage = ({
     }
   }, [pokemons]);
 
-  // eslint-disable-next-line no-underscore-dangle
-  const _pokemons = pokemons.reduce((result, e) => {
+  useEffect(() => {
+    // eslint-disable-next-line max-len
+    const results = pokemons.filter(pokemon => pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    setSearchResults(results);
+  }, [searchTerm]);
+
+  useEffect(() => () => {
+  }, []);
+
+  const pokeSelected = searchResults.length <= 0 ? pokemons : searchResults;
+  const _pokemons = pokeSelected.reduce((result, e) => {
     if (filter === 'All' || e.types[0].type.name === filter) {
       result.push(e);
     }
@@ -33,7 +51,12 @@ const PokemonsPage = ({
       {loading
         ? <Spinner /> : (
           <>
-            <PokemonFilter filter={filter} changeFilter={changeFilter} pokeTypes={pokeTypes} />
+            <PokemonFilter
+              filter={filter}
+              changeFilter={changeFilter}
+              pokeTypes={pokeTypes}
+            />
+            <PokemonSearch value={searchTerm} changeSearch={handleChange} />
             <PokemonList pokemons={_pokemons} />
           </>
         )}

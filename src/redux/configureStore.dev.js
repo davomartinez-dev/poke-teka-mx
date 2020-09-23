@@ -7,7 +7,7 @@ import rootReducer from './reducers';
 
 const configureStore = initialState => {
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // add support for Redux dev tools
-
+  // const composeEnhancers = compose; // add support for Redux dev tools
   return createStore(
     rootReducer,
     initialState,
