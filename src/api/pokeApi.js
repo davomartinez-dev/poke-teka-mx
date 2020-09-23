@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable import/prefer-default-export */
 import { handleResponse, handleError } from './apiUtils';
 
@@ -7,9 +8,9 @@ const getPokemonsArray = () => {
   const max = 600; const min = 1;
   const pokeIdArray = [];
   let randId;
-  for (let i = 0; i < 9; i += 1) {
-    randId = Math.floor(Math.random() * (max - 1)) + min;
-    pokeIdArray.push(randId);
+  for (let i = 1; i < 801; i += 1) {
+    // randId = Math.floor(Math.random() * (max - 1)) + min;
+    pokeIdArray.push(i);
   }
   return pokeIdArray.filter((a, b) => pokeIdArray.indexOf(a) === b);
 };

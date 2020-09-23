@@ -37,24 +37,14 @@ const PokemonsPage = ({
     // debugger;
   }, [searchTerm]);
 
-  let pokeSelected;
-  if (searchTerm === '') {
-    pokeSelected = pokemons.reduce((result, e) => {
-      if (filter === 'All' || e.types[0].type.name === filter) {
-        result.push(e);
-      }
-      return result;
-    }, []);
-  } else {
-    pokeSelected = searchResults.reduce((result, e) => {
-      if (filter === 'All' || e.types[0].type.name === filter) {
-        result.push(e);
-      }
-      return result;
-    }, []);
-  }
-
-  const _pokemons = pokeSelected;
+  const pokeSelected = searchResults.length <= 0 ? pokemons : searchResults;
+  console.log('ok');
+  const _pokemons = pokeSelected.reduce((result, e) => {
+    if (filter === 'All' || e.types[0].type.name === filter) {
+      result.push(e);
+    }
+    return result;
+  }, []);
 
   return (
     <>
