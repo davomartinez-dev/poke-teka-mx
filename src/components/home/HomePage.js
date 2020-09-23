@@ -31,9 +31,11 @@ const HomePage = () => {
       <p>
         <span className={classes.spanStyle}>
           Created by
-          <a href="https://www.linkedin.com/in/davideligarcia/" target="_blank" rel="noreferrer"> David García </a>
+          <a href="https://www.linkedin.com/in/davidelimartinez/" target="_blank" rel="noreferrer"> David Martínez </a>
           Github:
-          <a href="https://github.com/davitomix" target="_blank" rel="noreferrer"> @davitomix</a>
+          <a href="https://github.com/davomartinez-dev" target="_blank" rel="noreferrer"> @davomartinez-dev </a>
+          Twitter:
+          <a href="https://twitter.com/davomartinezdev" target="_blank" rel="noreferrer"> @davomartinezdev </a>
         </span>
         <br />
         <span className={classes.spanStyle}>Made with React, Redux, Coffe and Love.</span>
