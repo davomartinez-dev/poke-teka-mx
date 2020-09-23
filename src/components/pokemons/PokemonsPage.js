@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-debugger */
 /* eslint-disable react/forbid-prop-types */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
@@ -14,10 +16,10 @@ const PokemonsPage = ({
   pokemons, loadPokemons, loading, changeFilter, filter, pokeTypes,
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
 
   const handleChange = e => {
     setSearchTerm(e.target.value);
-    console.log(e.target.value);
   };
 
   useEffect(() => {
@@ -28,13 +30,31 @@ const PokemonsPage = ({
     }
   }, [pokemons]);
 
-  // eslint-disable-next-line no-underscore-dangle
-  const _pokemons = pokemons.reduce((result, e) => {
-    if (filter === 'All' || e.types[0].type.name === filter) {
-      result.push(e);
-    }
-    return result;
-  }, []);
+  useEffect(() => {
+    // eslint-disable-next-line max-len
+    const results = pokemons.filter(pokemon => pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    setSearchResults(results);
+    // debugger;
+  }, [searchTerm]);
+
+  let pokeSelected;
+  if (searchTerm === '') {
+    pokeSelected = pokemons.reduce((result, e) => {
+      if (filter === 'All' || e.types[0].type.name === filter) {
+        result.push(e);
+      }
+      return result;
+    }, []);
+  } else {
+    pokeSelected = searchResults.reduce((result, e) => {
+      if (filter === 'All' || e.types[0].type.name === filter) {
+        result.push(e);
+      }
+      return result;
+    }, []);
+  }
+
+  const _pokemons = pokeSelected;
 
   return (
     <>
