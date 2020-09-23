@@ -1,5 +1,5 @@
 /* eslint-disable react/forbid-prop-types */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -8,10 +8,18 @@ import Spinner from '../common/Spinner';
 import * as pokemonActions from '../../redux/actions/pokemonActions';
 import PokemonList from './PokemonsList';
 import PokemonFilter from './PokemonFilter';
+import PokemonSearch from './PokemonSearch';
 
 const PokemonsPage = ({
   pokemons, loadPokemons, loading, changeFilter, filter, pokeTypes,
 }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleChange = e => {
+    setSearchTerm(e.target.value);
+    console.log(e.target.value);
+  };
+
   useEffect(() => {
     if (pokemons.length === 0) {
       loadPokemons().catch(error => {
@@ -33,7 +41,12 @@ const PokemonsPage = ({
       {loading
         ? <Spinner /> : (
           <>
-            <PokemonFilter filter={filter} changeFilter={changeFilter} pokeTypes={pokeTypes} />
+            <PokemonFilter
+              filter={filter}
+              changeFilter={changeFilter}
+              pokeTypes={pokeTypes}
+            />
+            <PokemonSearch value={searchTerm} changeSearch={handleChange} />
             <PokemonList pokemons={_pokemons} />
           </>
         )}
