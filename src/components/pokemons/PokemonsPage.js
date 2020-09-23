@@ -37,6 +37,10 @@ const PokemonsPage = ({
     // debugger;
   }, [searchTerm]);
 
+  useEffect(() => () => {
+    console.log('cleaned up');
+  }, []);
+
   const pokeSelected = searchResults.length <= 0 ? pokemons : searchResults;
   console.log('ok');
   const _pokemons = pokeSelected.reduce((result, e) => {
