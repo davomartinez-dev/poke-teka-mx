@@ -42,8 +42,8 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
   },
   mainImage: {
-    width: '50%',
-    height: '50%',
+    width: '68%',
+    height: '75%',
   },
   secondaryImage: {
     width: '100%',

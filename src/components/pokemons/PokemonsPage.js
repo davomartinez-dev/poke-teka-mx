@@ -60,7 +60,6 @@ const PokemonsPage = ({
       toast.error(`Loading pokemons fail: ${error.message}`, { autoClose: false });
     });
   }, [isFetching]);
-
   const pokeSelected = searchResults.length <= 0 ? pokemons : searchResults;
   const _pokemons = pokeSelected.reduce((result, e) => {
     if (filter === 'All' || e.types[0].type.name === filter) {
@@ -81,7 +80,11 @@ const PokemonsPage = ({
             />
             <PokemonSearch value={searchTerm} changeSearch={handleChange} />
             <PokemonList pokemons={_pokemons} />
-            {isFetching && <Spinner />}
+            {isFetching && loading === false
+              ? <Spinner /> : (
+                <>
+                </>
+              )}
           </>
         )}
     </>

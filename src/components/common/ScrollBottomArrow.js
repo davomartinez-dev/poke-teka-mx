@@ -13,8 +13,8 @@ const ScrollBottomArrow = () => {
     }
   };
 
-  const scrollTop = () => {
-    window.scrollTo({ top: (document.body.offsetHeight) - 800, behavior: 'smooth' });
+  const scrollBottom = () => {
+    window.scrollTo({ top: (window.innerHeight + document.documentElement.scrollTop), behavior: 'smooth' });
   };
 
   window.addEventListener('scroll', checkScrollTop);
@@ -22,7 +22,7 @@ const ScrollBottomArrow = () => {
   return (
     <div className="scroll" style={{ marginRight: 180 }}>
       <FaArrowCircleDown
-        onClick={scrollTop}
+        onClick={scrollBottom}
         style={{
           height: 40, width: 40, display: showScroll ? 'flex' : 'none',
         }}
