@@ -36,11 +36,11 @@ const PokemonsPage = ({
     setSearchResults(results);
   }, [searchTerm]);
 
-  function handleScroll() {
+  const handleScroll = () => {
     // eslint-disable-next-line max-len
     if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight || isFetching) return;
     setIsFetching(true);
-  }
+  };
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
