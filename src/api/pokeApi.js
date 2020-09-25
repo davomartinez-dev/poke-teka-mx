@@ -8,9 +8,9 @@ const getPokemonsArray = () => {
   const max = 600; const min = 1;
   const pokeIdArray = [];
   let randId;
-  for (let i = 1; i < 11; i += 1) {
-    // randId = Math.floor(Math.random() * (max - 1)) + min;
-    pokeIdArray.push(i);
+  for (let i = 1; i < 12; i += 1) {
+    randId = Math.floor(Math.random() * (max - 1)) + min;
+    pokeIdArray.push(randId);
   }
   return pokeIdArray.filter((a, b) => pokeIdArray.indexOf(a) === b);
 };
