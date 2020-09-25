@@ -49,6 +49,10 @@ const PokemonsPage = ({
 
   useEffect(() => {
     if (!isFetching) return;
+    if (filter !== 'All') {
+      setIsFetching(false);
+      return;
+    }
     loadPokemons().then(() => setIsFetching(false)).catch(error => {
       toast.error(`Loading pokemons fail: ${error.message}`, { autoClose: false });
     });
