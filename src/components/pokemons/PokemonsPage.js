@@ -15,6 +15,7 @@ const PokemonsPage = ({
   pokemons, loadPokemons, loading, changeFilter, filter, pokeTypes,
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [searchResults, setSearchResults] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
 
@@ -58,7 +59,7 @@ const PokemonsPage = ({
     });
   }, [isFetching]);
 
-  const pokeSelected = searchResults.length <= 0 ? pokemons : searchResults;
+  const pokeSelected = searchResults.length <= 0 || searchTerm === '' ? pokemons : searchResults;
   const _pokemons = pokeSelected.reduce((result, e) => {
     if (filter === 'All' || e.types[0].type.name === filter) {
       result.push(e);
