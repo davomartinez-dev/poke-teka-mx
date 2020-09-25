@@ -28,7 +28,7 @@ const PokemonsPage = ({
         toast.error(`Loading pokemons fail: ${error.message}`, { autoClose: false });
       });
     }
-  }, [pokemons]);
+  }, []);
 
   useEffect(() => {
     // eslint-disable-next-line max-len
@@ -49,11 +49,14 @@ const PokemonsPage = ({
 
   useEffect(() => {
     if (!isFetching) return;
-    if (filter !== 'All') {
+    if (filter !== 'All' || searchTerm !== '') {
       setIsFetching(false);
       return;
     }
-    loadPokemons().then(() => setIsFetching(false)).catch(error => {
+    loadPokemons().then(() => {
+      setIsFetching(false);
+      setSearchResults(pokemons);
+    }).catch(error => {
       toast.error(`Loading pokemons fail: ${error.message}`, { autoClose: false });
     });
   }, [isFetching]);
