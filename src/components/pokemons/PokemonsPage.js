@@ -60,6 +60,7 @@ const PokemonsPage = ({
       toast.error(`Loading pokemons fail: ${error.message}`, { autoClose: false });
     });
   }, [isFetching]);
+
   const pokeSelected = searchResults.length <= 0 ? pokemons : searchResults;
   const _pokemons = pokeSelected.reduce((result, e) => {
     if (filter === 'All' || e.types[0].type.name === filter) {
