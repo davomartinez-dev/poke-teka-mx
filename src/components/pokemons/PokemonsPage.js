@@ -16,6 +16,7 @@ const PokemonsPage = ({
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [isFetching, setIsFetching] = useState(false);
 
   const handleChange = e => {
     setSearchTerm(e.target.value);
@@ -35,6 +36,24 @@ const PokemonsPage = ({
     setSearchResults(results);
   }, [searchTerm]);
 
+  function handleScroll() {
+    // eslint-disable-next-line max-len
+    if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight || isFetching) return;
+    setIsFetching(true);
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (!isFetching) return;
+    loadPokemons().then(() => setIsFetching(false)).catch(error => {
+      toast.error(`Loading pokemons fail: ${error.message}`, { autoClose: false });
+    });
+  }, [isFetching]);
+
   useEffect(() => () => {
   }, []);
 
@@ -48,7 +67,7 @@ const PokemonsPage = ({
 
   return (
     <>
-      {loading
+      {loading && isFetching === false
         ? <Spinner /> : (
           <>
             <PokemonFilter
@@ -58,6 +77,7 @@ const PokemonsPage = ({
             />
             <PokemonSearch value={searchTerm} changeSearch={handleChange} />
             <PokemonList pokemons={_pokemons} />
+            {isFetching && <Spinner />}
           </>
         )}
     </>
