@@ -53,10 +53,7 @@ const PokemonsPage = ({
       setIsFetching(false);
       return;
     }
-    loadPokemons().then(() => {
-      setIsFetching(false);
-      setSearchResults(pokemons);
-    }).catch(error => {
+    loadPokemons().then(() => setIsFetching(false)).catch(error => {
       toast.error(`Loading pokemons fail: ${error.message}`, { autoClose: false });
     });
   }, [isFetching]);
