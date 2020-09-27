@@ -16,6 +16,7 @@ import PokemonStats1 from './PokemonStats1';
 import PokemonStats2 from './PokemonStats2';
 import PokemonAbilities from './PokemonAbilities';
 import PokemonTypes from './PokemonTypes';
+import './PokemonDetail.css';
 
 defaults.global.defaultFontSize = 18;
 
@@ -170,8 +171,8 @@ const PokemonDetail = ({ pokemon, history }) => {
           <Paper className={classes.paper}>
             <PokemonStats2 pokemon={pokemon} />
           </Paper>
-          <Paper className={classes.paper}>
-            <Grid item xs={6}>
+          <Paper className={`${classes.paper} paperDirection`}>
+            <Grid item xs={12} sm={6}>
               <Bar
                 data={setChartHeight(pokemon.height)}
                 width={100}
@@ -181,7 +182,7 @@ const PokemonDetail = ({ pokemon, history }) => {
                 }}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
               <Bar
                 data={setChartWeight(pokemon.weight)}
                 width={100}

@@ -1,0 +1,11 @@
+@media (max-width: 415px) {
+  .span-style {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 416px) {
+  .span-style {
+    font-size: 14px;
+  }
+}
