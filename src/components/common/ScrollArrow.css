@@ -10,11 +10,11 @@
 }
 
 .scrollBottom {
-  bottom: 25px;
+  bottom: 30px;
 }
 
 .scrollTop {
-  bottom: 85px;
+  bottom: 90px;
 }
 
 @media (min-width: 768px) {

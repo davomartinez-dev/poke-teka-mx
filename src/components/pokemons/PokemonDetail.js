@@ -77,7 +77,7 @@ const setChartAttDefHpSp = (att, def, hp, speed) => ({
 });
 
 const setChartWeight = weight => ({
-  labels: ['Quantity'],
+  labels: ['Weight'],
   datasets: [
     {
       label: 'Weight',
@@ -92,7 +92,7 @@ const setChartWeight = weight => ({
 });
 
 const setChartHeight = height => ({
-  labels: ['Quantity'],
+  labels: ['Height'],
   datasets: [
     {
       label: 'Height',
