@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -23,10 +24,6 @@ const App = () => (
       <Route component={PageNotFound} />
     </Switch>
     <ToastContainer autoClose={3000} hideProgressBar />
-    <div className="container-fluid d-flex justify-content-around align-items-center">
-      <ScrollTopArrow />
-      <ScrollBottomArrow />
-    </div>
   </div>
 );
 
