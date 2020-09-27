@@ -15,7 +15,9 @@ const PokemonsPage = ({
   pokemons, loadPokemons, loading, changeFilter, filter, pokeTypes,
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [searchResults, setSearchResults] = useState([]);
+  const [isFetching, setIsFetching] = useState(false);
 
   const handleChange = e => {
     setSearchTerm(e.target.value);
@@ -27,7 +29,7 @@ const PokemonsPage = ({
         toast.error(`Loading pokemons fail: ${error.message}`, { autoClose: false });
       });
     }
-  }, [pokemons]);
+  }, []);
 
   useEffect(() => {
     // eslint-disable-next-line max-len
@@ -35,10 +37,29 @@ const PokemonsPage = ({
     setSearchResults(results);
   }, [searchTerm]);
 
-  useEffect(() => () => {
+  const handleScroll = () => {
+    // eslint-disable-next-line max-len
+    if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight || isFetching) return;
+    setIsFetching(true);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const pokeSelected = searchResults.length <= 0 ? pokemons : searchResults;
+  useEffect(() => {
+    if (!isFetching) return;
+    if (filter !== 'All' || searchTerm !== '') {
+      setIsFetching(false);
+      return;
+    }
+    loadPokemons().then(() => setIsFetching(false)).catch(error => {
+      toast.error(`Loading pokemons fail: ${error.message}`, { autoClose: false });
+    });
+  }, [isFetching]);
+
+  const pokeSelected = searchResults.length <= 0 || searchTerm === '' ? pokemons : searchResults;
   const _pokemons = pokeSelected.reduce((result, e) => {
     if (filter === 'All' || e.types[0].type.name === filter) {
       result.push(e);
@@ -48,7 +69,7 @@ const PokemonsPage = ({
 
   return (
     <>
-      {loading
+      {loading && isFetching === false
         ? <Spinner /> : (
           <>
             <PokemonFilter
@@ -58,6 +79,11 @@ const PokemonsPage = ({
             />
             <PokemonSearch value={searchTerm} changeSearch={handleChange} />
             <PokemonList pokemons={_pokemons} />
+            {isFetching && loading === false
+              ? <Spinner /> : (
+                <>
+                </>
+              )}
           </>
         )}
     </>

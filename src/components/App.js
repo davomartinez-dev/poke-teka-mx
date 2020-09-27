@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -8,7 +9,9 @@ import PageNotFound from './PageNotFound';
 import PokemonsPage from './pokemons/PokemonsPage';
 import PokemonDetail from './pokemons/PokemonDetail';
 import 'react-toastify/dist/ReactToastify.css';
-import ScrollArrow from './common/ScrollArrow';
+// import ScrollTopArrow from './common/ScrollTopArrow';
+import ScrollBottomArrow from './common/ScrollBottomArrow';
+import ScrollTopArrow from './common/ScrollTopArrow';
 
 const App = () => (
   <div className="container-fluid jumbotron">
@@ -21,7 +24,6 @@ const App = () => (
       <Route component={PageNotFound} />
     </Switch>
     <ToastContainer autoClose={3000} hideProgressBar />
-    <ScrollArrow />
   </div>
 );
 

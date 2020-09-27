@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { FaArrowCircleUp } from 'react-icons/fa';
 import './ScrollArrow.css';
 
-const ScrollArrow = () => {
+const ScrollTopArrow = () => {
   const [showScroll, setShowScroll] = useState(false);
 
   const checkScrollTop = () => {
-    if (!showScroll && window.pageYOffset > 400) {
+    if (!showScroll && window.pageYOffset > 150) {
       setShowScroll(true);
-    } else if (showScroll && window.pageYOffset <= 400) {
+    } else if (showScroll && window.pageYOffset <= 150) {
       setShowScroll(false);
     }
   };
@@ -20,8 +20,15 @@ const ScrollArrow = () => {
   window.addEventListener('scroll', checkScrollTop);
 
   return (
-    <FaArrowCircleUp className="scrollTop" onClick={scrollTop} style={{ height: 40, display: showScroll ? 'flex' : 'none' }} />
+    <div className="scroll" style={{ marginLeft: 180 }}>
+      <FaArrowCircleUp
+        onClick={scrollTop}
+        style={{
+          height: 40, width: 40, display: showScroll ? 'flex' : 'none',
+        }}
+      />
+    </div>
   );
 };
 
-export default ScrollArrow;
+export default ScrollTopArrow;
