@@ -18,7 +18,7 @@ const HomePage = () => {
   return (
     <div className="jumbotron">
       <h1>Poke-Teka</h1>
-      <p>This is the place where you can find information about your favorite Pokemon!</p>
+      <p>This is the place where you can find information about your favorite Pokemons!</p>
       <img src="https://images.pexels.com/photos/1310847/pexels-photo-1310847.jpeg?auto=compress&cs=tinysrgb" width="100%" />
       <Button variant="contained" color="primary" className={classes.button}>
         <Link to="about" style={navbarTab}>

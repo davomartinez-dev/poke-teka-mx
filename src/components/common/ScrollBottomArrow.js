@@ -6,25 +6,25 @@ const ScrollBottomArrow = () => {
   const [showScroll, setShowScroll] = useState(false);
 
   const checkScrollTop = () => {
-    if (!showScroll && window.pageYOffset > 150) {
+    if (!showScroll && window.pageYOffset > 100) {
       setShowScroll(true);
-    } else if (showScroll && window.pageYOffset <= 150) {
+    } else if (showScroll && window.pageYOffset <= 100) {
       setShowScroll(false);
     }
   };
 
   const scrollBottom = () => {
-    window.scrollTo({ top: (document.body.offsetHeight) - 800, behavior: 'smooth' });
+    window.scrollTo({ top: (document.body.offsetHeight) - 700, behavior: 'smooth' });
   };
 
   window.addEventListener('scroll', checkScrollTop);
 
   return (
-    <div className="scroll" style={{ marginRight: 180 }}>
+    <div className="scroll scrollBottom">
       <FaArrowCircleDown
         onClick={scrollBottom}
         style={{
-          height: 40, width: 40, display: showScroll ? 'flex' : 'none',
+          height: 50, width: 50, display: showScroll ? 'flex' : 'none',
         }}
       />
     </div>
