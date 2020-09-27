@@ -4,14 +4,11 @@ import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import navbarTab from '../themes';
+import './HomePage.css';
 
 const useStyles = makeStyles({
   button: {
     margin: '20px 0',
-  },
-  spanStyle: {
-    fontSize: '12px',
-    color: '#757575',
   },
 });
 
@@ -29,18 +26,20 @@ const HomePage = () => {
         </Link>
       </Button>
       <p>
-        <span className={classes.spanStyle}>
+        <span className="span-style">
           Created by
           <a href="https://www.linkedin.com/in/davidelimartinez/" target="_blank" rel="noreferrer"> David Martínez </a>
+          <br />
           Github:
           <a href="https://github.com/davomartinez-dev" target="_blank" rel="noreferrer"> @davomartinez-dev </a>
+          <br />
           Twitter:
           <a href="https://twitter.com/davomartinezdev" target="_blank" rel="noreferrer"> @davomartinezdev </a>
         </span>
         <br />
-        <span className={classes.spanStyle}>Made with React, Redux, Coffe and Love.</span>
+        <span className="span-style">Made with React, Redux, Coffe and Love.</span>
         <br />
-        <span className={classes.spanStyle}>Photo by Vincent M.A. Janssen from Pexels</span>
+        <span className="span-style">Photo by Vincent M.A. Janssen from Pexels</span>
       </p>
     </div>
   );
