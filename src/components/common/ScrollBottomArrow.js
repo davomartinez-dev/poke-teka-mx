@@ -14,7 +14,7 @@ const ScrollBottomArrow = () => {
   };
 
   const scrollBottom = () => {
-    window.scrollTo({ top: (document.body.offsetHeight) - 700, behavior: 'smooth' });
+    window.scrollTo({ top: (document.body.offsetHeight) - 800, behavior: 'smooth' });
   };
 
   window.addEventListener('scroll', checkScrollTop);
