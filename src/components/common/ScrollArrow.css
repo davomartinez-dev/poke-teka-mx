@@ -17,9 +17,11 @@
   bottom: 85px;
 }
 
-.scrollBottom:hover,
-.scrollTop:hover {
-  opacity: 1;
+@media (min-width: 768px) {
+  .scrollBottom:hover,
+  .scrollTop:hover {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn {
