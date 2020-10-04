@@ -18,10 +18,6 @@
 
 - [Live :rocket:](https://poke-teka-mx.netlify.app/)
 
-## Video Explanation
-
-- [Video](https://www.loom.com/share/299033775e5f4d43b29ff2a62c07633b)
-
 ## Usage
 
 > Clone the repository to your local machine
