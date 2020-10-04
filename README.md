@@ -38,7 +38,10 @@ $ npm start
 
 ## Automated Tests :space_invader:
 
-To implement.
+```sh
+$ cd poke-teka-mx
+$ npm run test
+```
 
 ## Authors
 
@@ -46,6 +49,12 @@ To implement.
 
 - Github: [@davitomix](https://github.com/davitomix)
 - LinkedIn: [David G.](https://linkedin.com/linkedinhandle)
+
+## Future implementations
+
+- Authentication and Authorization.
+- Implement the backend with rails in such a way as to reduce and optimize the size of the resources on the front end.
+- Allow users to create lists of their favorite pokemons.
 
 ## 🤝 Contributing
 
