@@ -15,9 +15,16 @@ const useStyles = makeStyles({
   },
   button: {
     padding: 0,
+    width: '100%',
+    height: 50,
   },
   navlink: {
     fontSize: '1.3em',
+    width: '100%',
+    height: 50,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
