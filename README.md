@@ -3,7 +3,7 @@
 > This is the place where you can find information about your favorite Pokemon!.
 
 <p align="center">
-  <img src="./poke-teka-main.gif">
+  <img src="./poke-teka-maain.gif">
 </p>
 
 ## Built With
