@@ -6,9 +6,9 @@ const ScrollBottomArrow = () => {
   const [showScroll, setShowScroll] = useState(false);
 
   const checkScrollTop = () => {
-    if (!showScroll && window.pageYOffset > 700) {
+    if (!showScroll && window.pageYOffset > 900) {
       setShowScroll(true);
-    } else if (showScroll && window.pageYOffset <= 700) {
+    } else if (showScroll && window.pageYOffset <= 900) {
       setShowScroll(false);
     }
   };
