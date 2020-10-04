@@ -40,7 +40,7 @@ $ npm start
 
 To implement.
 
-## Author
+## Authors
 
 👤 **David García**
 
