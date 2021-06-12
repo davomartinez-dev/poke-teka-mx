@@ -45,10 +45,11 @@ $ npm run test
 
 ## Authors
 
-👤 **David García**
+👤 **David Martínez**
 
-- Github: [@davitomix](https://github.com/davitomix)
-- LinkedIn: [David G.](https://linkedin.com/linkedinhandle)
+- Github: [@davomartinez-dev](https://github.com/davomartinez-dev)
+- Twitter: [@davomartinezdev](https://twitter.com/davomartinezdev)
+- LinkedIn: [David Martínez](https://www.linkedin.com/in/davidelimartinez/)
 
 ## Future implementations
 
